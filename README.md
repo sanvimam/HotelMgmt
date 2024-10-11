@@ -6,8 +6,8 @@
 
 # Team Members:
 1. Sanvi Mamidipalli - [@sanvimam](https://github.com/sanvimam)
-2. Suhayb Ahmed
-3. Neil Meza
+2. Suhayb Ahmed - [@SuhaybAhmed23](https://github.com/SuhaybAhmed23)
+3. Neil Meza - [@neilmeza](https://github.com/neilmeza)
 4. Hazel Lee
 
 # Scenario Description:
