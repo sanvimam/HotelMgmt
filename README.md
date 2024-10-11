@@ -79,7 +79,7 @@ External vendors provide services that the resort offers. The "Vendor" entity is
 ### Invoice Table
 <img width="494" alt="Screenshot 2024-10-11 at 1 00 34 PM" src="https://github.com/user-attachments/assets/6f288e37-c941-4359-a30e-9496bd4e89ea">
 
-
+# Queries:
 
 
 
