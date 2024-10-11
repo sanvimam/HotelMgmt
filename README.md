@@ -5,7 +5,7 @@
 29704 Group 1 DearyQuery
 
 # Team Members:
-1. Sanvi Mamidipalli
+1. Sanvi Mamidipalli @sanvi.mam
 2. Suhayb Ahmed
 3. Neil Meza
 4. Hazel Lee
