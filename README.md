@@ -52,5 +52,41 @@ External vendors provide services that the resort offers. The "Vendor" entity is
 ### Hotel Table
 <img width="484" alt="Screenshot 2024-10-11 at 12 55 11 PM" src="https://github.com/user-attachments/assets/649ba87c-72df-4d37-af1c-6b9eca6d265c">
 
+### Room Table
+<img width="577" alt="Screenshot 2024-10-11 at 12 56 06 PM" src="https://github.com/user-attachments/assets/9bf0e592-50ba-43a6-a336-e3fbf6f74807">
+
+### Reservations Table
+<img width="551" alt="Screenshot 2024-10-11 at 12 56 36 PM" src="https://github.com/user-attachments/assets/7573bc84-8784-4a61-b757-461622e01c0a">
+
+### Guests Table
+<img width="482" alt="Screenshot 2024-10-11 at 12 57 15 PM" src="https://github.com/user-attachments/assets/f686d3c8-bb22-42c0-bdad-4d63268b582e">
+
+### Payments Table
+<img width="544" alt="Screenshot 2024-10-11 at 12 57 42 PM" src="https://github.com/user-attachments/assets/edc09994-f3d0-49cd-bba0-09ae9937b6be">
+
+### Services Table
+<img width="521" alt="Screenshot 2024-10-11 at 12 58 21 PM" src="https://github.com/user-attachments/assets/60bc3c8f-b693-449b-8485-7d8822e77bcf">
+
+### Employees Table
+<img width="559" alt="Screenshot 2024-10-11 at 12 59 07 PM" src="https://github.com/user-attachments/assets/63c728c6-5b19-439f-bad1-95d2be883605">
+
+### Department Table
+<img width="522" alt="Screenshot 2024-10-11 at 12 59 42 PM" src="https://github.com/user-attachments/assets/c14774b6-23d5-4b9a-9600-a829d690a4c4">
+
+### Vendor Table
+<img width="497" alt="Screenshot 2024-10-11 at 1 00 10 PM" src="https://github.com/user-attachments/assets/3b953941-df7a-49e4-9284-a10859aa8990">
+
+### Invoice Table
+<img width="494" alt="Screenshot 2024-10-11 at 1 00 34 PM" src="https://github.com/user-attachments/assets/6f288e37-c941-4359-a30e-9496bd4e89ea">
+
+
+
+
+
+
+
+
+
+
 
 
