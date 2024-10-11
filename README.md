@@ -16,7 +16,7 @@ This model represents the operational structure of a resort company, focusing on
 # Data Model:
 This data model represents a relational structure for a resort management system. It supports the storage of various entities related to hotel operations, including hotels, rooms, guests, services, employees, vendors, payments, and invoices. Shown below is a breakdown of how data is organized and the relationships between entities.
 
-## Hotel and Room Relationship
+### Hotel and Room Relationship
 
 
 
