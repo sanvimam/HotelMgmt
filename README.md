@@ -16,19 +16,19 @@ This model represents the operational structure of a resort company, focusing on
 # Data Model:
 This data model represents a relational structure for a resort management system. It supports the storage of various entities related to hotel operations, including hotels, rooms, guests, services, employees, vendors, payments, and invoices. Shown below is a breakdown of how data is organized and the relationships between entities.
 
-### 1.Hotel and Room Relationship:
+### 1. Hotel and Room Relationship:
 Each hotel can have multiple rooms associated with it. The "Hotel" entity is connected to the "Room" entity, where each room belongs to a specific hotel. This captures the relationship between a hotel's location and the rooms it manages.
-### 2.Room and Reservation Relationship:
+### 2. Room and Reservation Relationship:
 Rooms are linked to reservations. A room can be reserved through the "Reservations" entity, and the "Room_has_Reservations" table handles this many-to-many relationship, allowing multiple rooms to be part of a single reservation, and multiple reservations can be made for the same room over time.
-### 3.Guests and Reservations Relationship:
+### 3. Guests and Reservations Relationship:
 Guests can make reservations for rooms, and this relationship is managed by the "Guests_has_Reservations" table, which connects the "Guests" and "Reservations" entities. This captures the information about which guest has reserved which rooms during their stay at the resort.
-### 4.Services and Guests:
+### 4. Services and Guests:
 The model also tracks the services that guests use during their stay through the "Services_has_Guests" table. This table connects the "Services" entity with the "Guests" entity, recording what services a guest has utilized (such as dining, spa, or transportation).
-### 5.Payments and Invoices:
+### 5. Payments and Invoices:
 Payments are recorded for each reservation, and these payments are linked to an invoice. The "Payments" entity connects both to the "Reservations" and the "Invoice" entities, allowing the system to track how much a guest paid for their stay and services, along with generating a corresponding invoice.
-### 6.Employees and Hotel Departments:
+### 6. Employees and Hotel Departments:
 The "Employees" entity is associated with departments within the hotel, captured by the "Department" entity. Each employee works for a department, and departments are connected to specific hotels, making it possible to track staff responsibilities and assignments within the resort.
-### 7.Vendors and Services:
+### 7. Vendors and Services:
 External vendors provide services that the resort offers. The "Vendor" entity is connected to the "Services" entity, allowing the resort to track which vendors supply which services (e.g., catering, spa treatments, transportation).
 
 ### What the Data Model Supports:
