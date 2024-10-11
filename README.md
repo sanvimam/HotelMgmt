@@ -31,6 +31,21 @@ The "Employees" entity is associated with departments within the hotel, captured
 ### 7.Vendors and Services:
 External vendors provide services that the resort offers. The "Vendor" entity is connected to the "Services" entity, allowing the resort to track which vendors supply which services (e.g., catering, spa treatments, transportation).
 
+### What the Data Model Supports:
+- Hotel Management: The system stores details about hotels and their rooms.
+- Guest Reservations: It tracks guest information, their reservations, and the rooms they book.
+- Services Usage: It supports the storage of data related to the services guests use during their stay.
+- Employee Management: It tracks employee roles and department assignments within each hotel.
+- Vendor and Service Tracking: It manages vendor relationships and the services provided by those vendors.
+- Payment and Invoice Processing: It records payments made by guests and generates invoices related to their stays and services used.
+
+### What the Data Model Does Not Support:
+- Service Inventory: The model does not track specific inventories for services (e.g., food items for dining services or spa products).
+- Customer Feedback/Surveys: There's no entity to capture guest feedback or satisfaction ratings.
+- Room Cleaning and Maintenance Schedules: It does not track room cleaning or maintenance records.
+- Event or Group Bookings: The model does not specifically cater to group reservations or events hosted at the resort.
+- Marketing and Promotions: There's no structure for storing data related to marketing campaigns, promotions, or loyalty programs for guests.
+
 
 
 
