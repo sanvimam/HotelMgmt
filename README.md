@@ -48,5 +48,7 @@ External vendors provide services that the resort offers. The "Vendor" entity is
 
 <img width="747" alt="Screenshot 2024-10-11 at 12 41 02 PM" src="https://github.com/user-attachments/assets/d6c97aa6-b3b6-4fb9-8bbe-0da1295e14cb">
 
+# Data Dictionary:
+
 
 
