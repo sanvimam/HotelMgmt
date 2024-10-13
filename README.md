@@ -80,7 +80,7 @@ External vendors provide services that the resort offers. The "Vendor" entity is
 <img width="494" alt="Screenshot 2024-10-11 at 1 00 34 PM" src="https://github.com/user-attachments/assets/6f288e37-c941-4359-a30e-9496bd4e89ea">
 
 # Queries:
-all reservations for a specific guest:
+1. all reservations for a specific guest:
 
 SELECT Guests.firstName, Guests.lastName, Reservations.idReservations, Reservations.number_of_rooms, Reservations.number_of_guests
 FROM Guests
@@ -90,7 +90,7 @@ WHERE Guests.idGuests = <guest_id>;
 
 The query will help the management by identifying all reservations made by a specific guest. Tracking the reservation history of guests allows the hotel to better understand their preferences, such as how often they visit, the number of rooms they usually book, and the number of guests they bring. This information can be used to improve guest satisfaction through personalized service and better anticipate their needs, enhancing guest loyalty and fostering r
 
-all services used by a specific guest:
+2. all services used by a specific guest:
 
 SELECT Guests.firstName, Guests.lastName, Services.service_name, Services.service_type
 FROM Services
@@ -100,7 +100,7 @@ WHERE Guests.idGuests = <guest_id>;
 
 This query is essential for understanding the services that a particular guest has utilized during their stay. By tracking this data, hotel management can identify which services are most popular with individual guests, helping to tailor special offers, loyalty rewards, or targeted marketing efforts. This helps in increasing guest satisfaction and generating more revenue through services like dining, spa, or transportation.
 
-all reservations for a specific hotel:
+3. all reservations for a specific hotel:
 
 SELECT Hotel.nameHotel, Room.typeRoom, Reservations.idReservations, Reservations.number_of_rooms, Reservations.number_of_guests
 FROM Hotel
@@ -111,7 +111,7 @@ WHERE Hotel.idHotel = <hotel_id>;
 
 This query provides the hotel management with a complete list of reservations for a particular hotel. It helps monitor occupancy rates and guest booking patterns, enabling management to optimize resource allocation, adjust staffing levels, and plan marketing strategies to maximize room occupancy. The data is crucial for understanding booking trends and operational efficiency at a specific location.
 
-total payments made by a guest:
+4. total payments made by a guest:
 
 SELECT Guests.firstName, Guests.lastName, SUM(Payments.amount) AS total_paid
 FROM Guests
@@ -122,7 +122,7 @@ WHERE Guests.idGuests = <guest_id>;
 
 This query calculates the total payments made by a specific guest, offering valuable insights into guest spending behavior. By analyzing this data, hotel management can track high-value guests and offer them personalized promotions or loyalty benefits. Additionally, it helps in financial management by keeping a record of all payments made by each guest, which can be used for billing reconciliation and revenue reporting.
 
-all vendors providing services to the resort:
+5. all vendors providing services to the resort:
 
 SELECT Vendor.nameVendor, Services.service_name, Services.service_type
 FROM Vendor
@@ -130,6 +130,72 @@ JOIN Services ON Vendor.idVendor = Services.idVendor;
 
 This query lists all external vendors that provide services to the resort, offering insights into vendor relationships and the services they supply. It allows the management to keep track of which vendors are responsible for which services, making it easier to manage contracts, assess vendor performance, and ensure that quality service is delivered to guests. This data is essential for maintaining strong vendor partnerships and streamlining service delivery.
 
+6. Query to Find the Most Profitable Department Based on Services Rendered
+This query calculates which department generates the most revenue based on the services provided.
+SELECT d.nameDpt, SUM(p.amount) AS departmentRevenue
+FROM Department d
+JOIN Employees e ON d.idDpt = e.idDpt
+JOIN Services s ON e.idEmployees = s.idVendor
+JOIN Services_has_Guests sg ON s.idServices = sg.idServices
+JOIN Payments p ON sg.idGuests = p.idReservations
+GROUP BY d.idDpt, d.nameDpt
+ORDER BY departmentRevenue DESC;
+
+This query helps management understand which departments are contributing the most to the hotel's profitability through the services they provide. Identifying profitable departments allows management to focus on enhancing services, investing in staff training, and allocating resources effectively. Underperforming departments can also be reviewed for improvement or restructuring to increase overall profitability.
+
+
+7. Query to Get the Most Frequently Used Service by Guests
+This query shows which services are most popular among guests.
+SELECT s.service_name, COUNT(sg.idGuests) AS guestCount
+FROM Services s
+JOIN Services_has_Guests sg ON s.idServices = sg.idServices
+GROUP BY s.idServices, s.service_name
+ORDER BY guestCount DESC;
+
+Knowing which services are most frequently used helps the hotel identify guest preferences and invest in enhancing or expanding those services. Popular services contribute to guest satisfaction and can be a significant source of revenue. Management can leverage this information to create promotions, optimize service offerings, and ensure resources are focused on high-demand areas.
+
+
+8.Query to List Guests with Outstanding Payments
+This query lists all guests who still have an unpaid balance on their invoices.
+SELECT g.firstName, g.lastName, i.totalAmount, SUM(p.amount) AS amountPaid,
+       (i.totalAmount - SUM(p.amount)) AS balanceRemaining
+FROM Guests g
+JOIN Guests_has_Reservations gr ON g.idGuests = gr.idGuests
+JOIN Reservations res ON gr.idReservations = res.idReservations
+JOIN Invoice i ON res.idReservations = i.idInvoice
+JOIN Payments p ON res.idReservations = p.idReservations
+GROUP BY g.idGuests, i.totalAmount
+HAVING balanceRemaining > 0;
+This query identifies guests with unpaid balances, which allows the hotel to take action to collect outstanding payments and manage its cash flow more effectively. Unpaid invoices can negatively affect the hotel's financial health. By tracking outstanding payments, management can implement more efficient billing and payment follow-up processes, reducing potential revenue losses.
+
+
+9.Query to Calculate Total Revenue Generated by Each Hotel
+SELECT 
+    Hotel.nameHotel, 
+    SUM(Payments.amount) AS total_revenue
+FROM  Hotel
+JOIN   Room ON Hotel.idHotel = Room.idHotel
+JOIN Room_has_Reservations ON Room.idRoom = Room_has_Reservations.idRoom
+JOIN Reservations ON Room_has_Reservations.idReservations = Reservations.idReservations
+JOIN Payments ON Reservations.idReservations = Payments.idReservations
+GROUP BY Hotel.idHotel, Hotel.nameHotel
+ORDER BY  total_revenue DESC;
+
+The query to get the percentage of booked rooms by each hotel is important for optimizing operational efficiency and resource allocation. It helps hotel management understand occupancy trends, allowing them to adjust pricing strategies, staffing levels, and marketing efforts. This data is crucial for maximizing revenue by ensuring high occupancy rates while minimizing unused room inventory.
+
+10.Query to Get the Percentage of Booked Rooms by Each Hotel
+SELECT 
+    Hotel.nameHotel,
+    COUNT(Room.idRoom) AS total_rooms,
+    COUNT(Room_has_Reservations.idReservations) AS booked_rooms,
+    (COUNT(Room_has_Reservations.idReservations) * 100.0 / COUNT(Room.idRoom)) AS percentage_booked
+FROM Hotel
+JOIN Room ON Hotel.idHotel = Room.idHotel
+JOIN Room_has_Reservations ON Room.idRoom = Room_has_Reservations.idRoom
+GROUP BY Hotel.idHotel, Hotel.nameHotel
+ORDER BY percentage_booked DESC;
+
+The query to get the percentage of booked rooms by each hotel is crucial for monitoring occupancy levels and maximizing revenue. It allows hotel management to identify booking trends, make data-driven decisions for pricing strategies, and optimize resource allocation, such as staffing and room availability. This insight helps in improving operational efficiency while minimizing vacant rooms.
 
 
 
