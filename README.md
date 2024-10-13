@@ -86,7 +86,7 @@ SELECT Guests.firstName, Guests.lastName, Reservations.idReservations, Reservati
 FROM Guests
 JOIN Guests_has_Reservations ON Guests.idGuests = Guests_has_Reservations.idGuests
 JOIN Reservations ON Guests_has_Reservations.idReservations = Reservations.idReservations
-WHERE Guests.idGuests = idGuests;
+WHERE Guests.idGuests = 1;
 
 The query will help the management by identifying all reservations made by a specific guest. Tracking the reservation history of guests allows the hotel to better understand their preferences, such as how often they visit, the number of rooms they usually book, and the number of guests they bring. This information can be used to improve guest satisfaction through personalized service and better anticipate their needs, enhancing guest loyalty and fostering r
 
@@ -96,7 +96,7 @@ SELECT Guests.firstName, Guests.lastName, Services.service_name, Services.servic
 FROM Services
 JOIN Services_has_Guests ON Services.idServices = Services_has_Guests.idServices
 JOIN Guests ON Services_has_Guests.idGuests = Guests.idGuests
-WHERE Guests.idGuests = idGuests;
+WHERE Guests.idGuests = 1;
 
 This query is essential for understanding the services that a particular guest has utilized during their stay. By tracking this data, hotel management can identify which services are most popular with individual guests, helping to tailor special offers, loyalty rewards, or targeted marketing efforts. This helps in increasing guest satisfaction and generating more revenue through services like dining, spa, or transportation.
 
@@ -107,7 +107,7 @@ FROM Hotel
 JOIN Room ON Hotel.idHotel = Room.idHotel 
 JOIN Room_has_Reservations ON Room.idRoom = Room_has_Reservations.idRoom 
 JOIN Reservations ON Room_has_Reservations.idReservations = Reservations.idReservations 
-WHERE Hotel.idHotel = idHotel
+WHERE Hotel.idHotel = 2
 AND NOT EXISTS (
     SELECT 1 
     FROM Room_has_Reservations rhr 
@@ -124,7 +124,7 @@ FROM Guests
 JOIN Guests_has_Reservations ON Guests.idGuests = Guests_has_Reservations.idGuests
 JOIN Reservations ON Guests_has_Reservations.idReservations = Reservations.idReservations
 JOIN Payments ON Reservations.idReservations = Payments.idReservations
-WHERE Guests.idGuests = idGuests;
+WHERE Guests.idGuests = 1;
 
 This query calculates the total payments made by a specific guest, offering valuable insights into guest spending behavior. By analyzing this data, hotel management can track high-value guests and offer them personalized promotions or loyalty benefits. Additionally, it helps in financial management by keeping a record of all payments made by each guest, which can be used for billing reconciliation and revenue reporting.
 
