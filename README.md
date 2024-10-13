@@ -8,7 +8,7 @@
 1. Sanvi Mamidipalli - [@sanvimam](https://github.com/sanvimam)
 2. Suhayb Ahmed - [@SuhaybAhmed23](https://github.com/SuhaybAhmed23)
 3. Neil Meza - [@neilmeza](https://github.com/neilmeza)
-4. Hazel Lee
+4. Hazel Lee - [@MIST4610](https://github.com/MIST4610)
 
 # Scenario Description:
 This model represents the operational structure of a resort company, focusing on managing its hotels, guest bookings, services, and staff. The system tracks how guests interact with the resort by making room reservations, using various services offered at the hotel, and making payments. It also handles the management of employees and their respective departments, ensuring smooth internal operations. Additionally, the model supports vendor relationships, where external vendors provide certain services to the guests. By using this model, the resort can effectively oversee daily activities, track guest experiences, and analyze performance across different areas such as guest satisfaction, employee management, and vendor services. The system is designed to enhance the overall management and service delivery of the resort, ensuring smooth operations across its various departments and services.
