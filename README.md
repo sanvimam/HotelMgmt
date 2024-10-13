@@ -81,6 +81,7 @@ External vendors provide services that the resort offers. The "Vendor" entity is
 
 # Queries:
 all reservations for a specific guest:
+
 SELECT Guests.firstName, Guests.lastName, Reservations.idReservations, Reservations.number_of_rooms, Reservations.number_of_guests
 FROM Guests
 JOIN Guests_has_Reservations ON Guests.idGuests = Guests_has_Reservations.idGuests
@@ -88,6 +89,7 @@ JOIN Reservations ON Guests_has_Reservations.idReservations = Reservations.idRes
 WHERE Guests.idGuests = <guest_id>;
 
 all services used by a specific guest:
+
 SELECT Guests.firstName, Guests.lastName, Services.service_name, Services.service_type
 FROM Services
 JOIN Services_has_Guests ON Services.idServices = Services_has_Guests.idServices
@@ -95,6 +97,7 @@ JOIN Guests ON Services_has_Guests.idGuests = Guests.idGuests
 WHERE Guests.idGuests = <guest_id>;
 
 all reservations for a specific hotel:
+
 SELECT Hotel.nameHotel, Room.typeRoom, Reservations.idReservations, Reservations.number_of_rooms, Reservations.number_of_guests
 FROM Hotel
 JOIN Room ON Hotel.idHotel = Room.idHotel
@@ -103,6 +106,7 @@ JOIN Reservations ON Room_has_Reservations.idReservations = Reservations.idReser
 WHERE Hotel.idHotel = <hotel_id>;
 
 total payments made by a guest:
+
 SELECT Guests.firstName, Guests.lastName, SUM(Payments.amount) AS total_paid
 FROM Guests
 JOIN Guests_has_Reservations ON Guests.idGuests = Guests_has_Reservations.idGuests
@@ -111,6 +115,7 @@ JOIN Payments ON Reservations.idReservations = Payments.idReservations
 WHERE Guests.idGuests = <guest_id>;
 
 all vendors providing services to the resort:
+
 SELECT Vendor.nameVendor, Services.service_name, Services.service_type
 FROM Vendor
 JOIN Services ON Vendor.idVendor = Services.idVendor;
