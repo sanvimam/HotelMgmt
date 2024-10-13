@@ -102,12 +102,18 @@ This query is essential for understanding the services that a particular guest h
 
 3. all reservations for a specific hotel:
 
-SELECT Hotel.nameHotel, Room.typeRoom, Reservations.idReservations, Reservations.number_of_rooms, Reservations.number_of_guests
-FROM Hotel
-JOIN Room ON Hotel.idHotel = Room.idHotel
-JOIN Room_has_Reservations ON Room.idRoom = Room_has_Reservations.idRoom
-JOIN Reservations ON Room_has_Reservations.idReservations = Reservations.idReservations
-WHERE Hotel.idHotel = <hotel_id>;
+SELECT Hotel.nameHotel, Room.typeRoom, Reservations.idReservations, Reservations.number_of_rooms, Reservations.number_of_guests 
+FROM Hotel 
+JOIN Room ON Hotel.idHotel = Room.idHotel 
+JOIN Room_has_Reservations ON Room.idRoom = Room_has_Reservations.idRoom 
+JOIN Reservations ON Room_has_Reservations.idReservations = Reservations.idReservations 
+WHERE Hotel.idHotel = <hotel_id>
+AND NOT EXISTS (
+    SELECT 1 
+    FROM Room_has_Reservations rhr 
+    WHERE rhr.idRoom = Room.idRoom
+    AND rhr.idReservations IS NULL
+);
 
 This query provides the hotel management with a complete list of reservations for a particular hotel. It helps monitor occupancy rates and guest booking patterns, enabling management to optimize resource allocation, adjust staffing levels, and plan marketing strategies to maximize room occupancy. The data is crucial for understanding booking trends and operational efficiency at a specific location.
 
