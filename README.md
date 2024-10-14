@@ -154,8 +154,10 @@ The query to get the percentage of booked rooms by each hotel is important for o
 
 The query to get the percentage of booked rooms by each hotel is crucial for monitoring occupancy levels and maximizing revenue. It allows hotel management to identify booking trends, make data-driven decisions for pricing strategies, and optimize resource allocation, such as staffing and room availability. This insight helps in improving operational efficiency while minimizing vacant rooms.
 
+# Database Information:
+Name of the database: cs_sm98994
 
-
+Additional information: Each query listed above is marked in the database using stored procedures which can be called using the following format: CALL TP_Q1();
 
 
 
