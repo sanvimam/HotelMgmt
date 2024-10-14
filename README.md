@@ -82,57 +82,35 @@ External vendors provide services that the resort offers. The "Vendor" entity is
 # Queries:
 1. All reservations for a specific guest:
 
-SELECT Guests.firstName, Guests.lastName, Reservations.idReservations, Reservations.number_of_rooms, Reservations.number_of_guests
-FROM Guests
-JOIN Guests_has_Reservations ON Guests.idGuests = Guests_has_Reservations.idGuests
-JOIN Reservations ON Guests_has_Reservations.idReservations = Reservations.idReservations
-WHERE Guests.idGuests = 1;
+![PNG image](https://github.com/user-attachments/assets/ee2502c9-0424-459d-a8d9-b506f7fd2757)
 
-The query will help the management by identifying all reservations made by a specific guest. Tracking the reservation history of guests allows the hotel to better understand their preferences, such as how often they visit, the number of rooms they usually book, and the number of guests they bring. This information can be used to improve guest satisfaction through personalized service and better anticipate their needs, enhancing guest loyalty and fostering r
+
+The query will help the management by identifying all reservations made by a specific guest. Tracking the reservation history of guests allows the hotel to better understand their preferences, such as how often they visit, the number of rooms they usually book, and the number of guests they bring. This information can be used to improve guest satisfaction through personalized service and better anticipate their needs, enhancing guest loyalty and fostering repeat business.
 
 2. All services used by a specific guest:
 
-SELECT Guests.firstName, Guests.lastName, Services.service_name, Services.service_type
-FROM Services
-JOIN Services_has_Guests ON Services.idServices = Services_has_Guests.idServices
-JOIN Guests ON Services_has_Guests.idGuests = Guests.idGuests
-WHERE Guests.idGuests = 1;
+![PNG image](https://github.com/user-attachments/assets/458c5b79-43a4-4514-8f72-1aa57d2891c7)
+
 
 This query is essential for understanding the services that a particular guest has utilized during their stay. By tracking this data, hotel management can identify which services are most popular with individual guests, helping to tailor special offers, loyalty rewards, or targeted marketing efforts. This helps in increasing guest satisfaction and generating more revenue through services like dining, spa, or transportation.
 
 3. All reservations for a specific hotel:
 
-SELECT Hotel.nameHotel, Room.typeRoom, Reservations.idReservations, Reservations.number_of_rooms, Reservations.number_of_guests 
-FROM Hotel 
-JOIN Room ON Hotel.idHotel = Room.idHotel 
-JOIN Room_has_Reservations ON Room.idRoom = Room_has_Reservations.idRoom 
-JOIN Reservations ON Room_has_Reservations.idReservations = Reservations.idReservations 
-WHERE Hotel.idHotel = 2
-AND NOT EXISTS (
-    SELECT 1 
-    FROM Room_has_Reservations rhr 
-    WHERE rhr.idRoom = Room.idRoom
-    AND rhr.idReservations IS NULL
-);
+![PNG image](https://github.com/user-attachments/assets/66ef5c42-7cb3-4aad-8b37-266e096bf7ad)
+
 
 This query provides the hotel management with a complete list of reservations for a particular hotel. It helps monitor occupancy rates and guest booking patterns, enabling management to optimize resource allocation, adjust staffing levels, and plan marketing strategies to maximize room occupancy. The data is crucial for understanding booking trends and operational efficiency at a specific location.
 
 4. Total payments made by a guest:
 
-SELECT Guests.firstName, Guests.lastName, SUM(Payments.amount) AS total_paid
-FROM Guests
-JOIN Guests_has_Reservations ON Guests.idGuests = Guests_has_Reservations.idGuests
-JOIN Reservations ON Guests_has_Reservations.idReservations = Reservations.idReservations
-JOIN Payments ON Reservations.idReservations = Payments.idReservations
-WHERE Guests.idGuests = 1;
+![PNG image](https://github.com/user-attachments/assets/bd7a69ab-2fe6-4cd1-9be8-b1195f48c7e8)
 
 This query calculates the total payments made by a specific guest, offering valuable insights into guest spending behavior. By analyzing this data, hotel management can track high-value guests and offer them personalized promotions or loyalty benefits. Additionally, it helps in financial management by keeping a record of all payments made by each guest, which can be used for billing reconciliation and revenue reporting.
 
 5. All vendors providing services to the resort:
 
-SELECT Vendor.nameVendor, Services.service_name, Services.service_type
-FROM Vendor
-JOIN Services ON Vendor.idVendor = Services.idVendor;
+![PNG image](https://github.com/user-attachments/assets/b001791b-fa02-4f9e-a81c-e0abdc8c4f40)
+
 
 This query lists all external vendors that provide services to the resort, offering insights into vendor relationships and the services they supply. It allows the management to keep track of which vendors are responsible for which services, making it easier to manage contracts, assess vendor performance, and ensure that quality service is delivered to guests. This data is essential for maintaining strong vendor partnerships and streamlining service delivery.
 
