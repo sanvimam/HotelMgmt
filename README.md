@@ -80,6 +80,11 @@ External vendors provide services that the resort offers. The "Vendor" entity is
 <img width="494" alt="Screenshot 2024-10-11 at 1 00 34 PM" src="https://github.com/user-attachments/assets/6f288e37-c941-4359-a30e-9496bd4e89ea">
 
 # Queries:
+
+
+![IMG_5248](https://github.com/user-attachments/assets/0835b9b6-dddb-45f7-ba0d-3ecc397cd029)
+
+
 1. All reservations for a specific guest:
 
 ![PNG image](https://github.com/user-attachments/assets/ee2502c9-0424-459d-a8d9-b506f7fd2757)
